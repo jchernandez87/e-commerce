@@ -28,7 +28,7 @@ const NavBar = () => {
           </Typography>
           <div style={styles.grow} />
           <div style={styles.button}>
-            <IconButton aria-labe="show cart items" color="inherit">
+            <IconButton aria-label="show cart items" color="inherit">
               <Badge badgeContent={2} color="secondary">
                 <ShoppingCart />
               </Badge>
