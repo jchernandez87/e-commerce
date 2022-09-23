@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import { NavBar, Products, Cart } from "./components";
 import { commerce } from "./lib/commerce";
 
@@ -21,6 +22,11 @@ const App = () => {
       .then((response) => setCart(response));
   };
 
+  const handleEmptyCart = () => {
+    commerce.cart.empty();
+    setCart({});
+  };
+
   useEffect(() => {
     fetchProducts();
     fetchCart();
@@ -29,8 +35,19 @@ const App = () => {
   return (
     <div>
       <NavBar totalItems={cart.total_items} />
-      {/* <Products onAddToCart={handleAddToCart} products={products} /> */}
-      <Cart myCart={cart} /> 
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <Products onAddToCart={handleAddToCart} products={products} />
+          }
+        />
+        <Route
+          path="/cart"
+          element={<Cart onEmptyCart={handleEmptyCart} myCart={cart} />}
+        />
+      </Routes>
     </div>
   );
 };

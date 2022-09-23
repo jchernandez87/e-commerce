@@ -2,14 +2,14 @@ import { Container, Typography, Button, Grid } from "@mui/material";
 import CardItem from "./CartItem/CartItem";
 import styles from "./styles";
 
-const Cart = ({ myCart }) => {
+const Cart = ({ myCart, onEmptyCart }) => {
+  if (!myCart.line_items) return "...Loading";
+
   const EmptyCart = () => (
     <Typography variant="subtitle1">
       You have no items in your shopping cart, start adding some!
     </Typography>
   );
-
-  if (!myCart.line_items) return "...Loading";
 
   const cartItems = myCart.line_items.map((item) => (
     <Grid item key={item.id} xs={12} sm={4}>
@@ -28,6 +28,7 @@ const Cart = ({ myCart }) => {
         </Typography>
         <div>
           <Button
+            onClick={onEmptyCart}
             styles={styles.emptyButton}
             size="large"
             type="button"
@@ -50,12 +51,10 @@ const Cart = ({ myCart }) => {
     </>
   );
 
-  console.log(myCart)
-
   return (
     <Container mt={8}>
       <div style={styles.toolbar} />
-      <Typography sylte={styles.title} variant="h3">
+      <Typography gutterBottom sylte={styles.title} variant="h3">
         Your Shooping Cart
       </Typography>
       {!myCart.line_items.length ? <EmptyCart /> : <FilledCart />}
