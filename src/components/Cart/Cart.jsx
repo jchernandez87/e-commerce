@@ -14,7 +14,6 @@ const Cart = ({ myCart }) => {
   const cartItems = myCart.line_items.map((item) => (
     <Grid item key={item.id} xs={12} sm={4}>
       <CardItem item={item} />
-      <div>{item.name}</div>
     </Grid>
   ));
 
@@ -50,6 +49,8 @@ const Cart = ({ myCart }) => {
       </div>
     </>
   );
+
+  console.log(myCart)
 
   return (
     <Container mt={8}>
