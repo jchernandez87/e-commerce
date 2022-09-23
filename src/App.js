@@ -34,6 +34,12 @@ const App = () => {
       .then((updatedCart) => setCart(updatedCart));
   };
 
+  const handleRemoveItem = (productId) => {
+    commerce.cart
+    .remove(productId)
+    .then(updatedCart => setCart(updatedCart))
+  }
+
   useEffect(() => {
     fetchProducts();
     fetchCart();
@@ -54,6 +60,7 @@ const App = () => {
           path="/cart"
           element={
             <Cart
+              removeItem={handleRemoveItem}
               increaseQuantity={handleIncreaseQuantity}
               decreaseQuantity={handleDecreaseQuantity}
               myCart={cart}
