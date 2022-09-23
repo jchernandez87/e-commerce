@@ -16,26 +16,20 @@ const App = () => {
     setCart(await commerce.cart.retrieve());
   };
 
-  const handleAddToCart = (productId, quantity) => {
-    commerce.cart
+  const handleAddToCart = async (productId, quantity) => {
+    await commerce.cart
       .add(productId, quantity)
       .then((updatedCart) => setCart(updatedCart));
   };
 
-  const handleDecreaseQuantity = (productId, productQuantity) => {
-    commerce.cart
+  const handleUpdateQuantity = async (productId, productQuantity) => {
+    await commerce.cart
       .update(productId, productQuantity)
       .then((updatedCart) => setCart(updatedCart));
   };
 
-  const handleIncreaseQuantity = (productId, productQuantity) => {
-    commerce.cart
-      .update(productId, productQuantity)
-      .then((updatedCart) => setCart(updatedCart));
-  };
-
-  const handleRemoveItem = (productId) => {
-    commerce.cart
+  const handleRemoveItem = async (productId) => {
+    await commerce.cart
     .remove(productId)
     .then(updatedCart => setCart(updatedCart))
   }
@@ -61,8 +55,7 @@ const App = () => {
           element={
             <Cart
               removeItem={handleRemoveItem}
-              increaseQuantity={handleIncreaseQuantity}
-              decreaseQuantity={handleDecreaseQuantity}
+              updateQuantity={handleUpdateQuantity}
               myCart={cart}
             />
           }

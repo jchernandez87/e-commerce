@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import CardItem from "./CartItem/CartItem";
 import styles from "./styles";
 
-const Cart = ({ myCart, decreaseQuantity, increaseQuantity, removeItem }) => {
+const Cart = ({ myCart, updateQuantity, removeItem }) => {
   const EmptyCart = () => (
     <Typography variant="subtitle1">
       You have no items in your shopping cart,
@@ -20,8 +20,7 @@ const Cart = ({ myCart, decreaseQuantity, increaseQuantity, removeItem }) => {
     <Grid item key={item.id} xs={12} sm={4}>
       <CardItem
         removeItem={removeItem}
-        increaseQuantity={increaseQuantity}
-        decreaseQuantity={decreaseQuantity}
+        updateQuantity={updateQuantity}
         item={item}
       />
     </Grid>

@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import styles from "./styles";
 
-const CartItem = ({ item, decreaseQuantity, increaseQuantity, removeItem }) => {
+const CartItem = ({ item, updateQuantity, removeItem }) => {
   return (
     <Card>
       <CardMedia image={item.image.url} alt={item.name} style={styles.media} />
@@ -21,11 +21,11 @@ const CartItem = ({ item, decreaseQuantity, increaseQuantity, removeItem }) => {
       </CardContent>
       <CardActions style={styles.cardActions}>
         <div style={styles.buttons}>
-          <Button onClick={() => decreaseQuantity(item.id, {quantity: item.quantity - 1})} type="button" size="small">
+          <Button onClick={() => updateQuantity(item.id, {quantity: item.quantity - 1})} type="button" size="small">
             -
           </Button>
           <Typography>{item.quantity}</Typography>
-          <Button onClick={() => increaseQuantity(item.id, {quantity: item.quantity + 1})} type="button" size="small">
+          <Button onClick={() => updateQuantity(item.id, {quantity: item.quantity + 1})} type="button" size="small">
             +
           </Button>
         </div>
