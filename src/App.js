@@ -4,24 +4,34 @@ import { commerce } from "./lib/commerce";
 
 const App = () => {
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState({});
 
   const fetchProducts = async () => {
-    try {
-      const { data } = await commerce.products.list();
-      setProducts(data);
-    } catch (err) {
-      console.log(err);
-    }
+    const { data } = await commerce.products.list();
+    setProducts(data);
   };
+
+  const fetchCart = async () => {
+    setCart(await commerce.cart.retrieve());
+  };
+
+  const handleAddToCart = (productId, quantity) => {
+    commerce.cart
+      .add(productId, quantity)
+      .then((response) => setCart(response));
+  };
+
+  console.log(cart);
 
   useEffect(() => {
     fetchProducts();
+    fetchCart();
   }, []);
 
   return (
     <div>
-      <NavBar />
-      <Products products={products} />
+      <NavBar totalItems={cart.total_items} />
+      <Products onAddToCart={handleAddToCart} products={products} />
     </div>
   );
 };

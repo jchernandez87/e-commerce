@@ -1,10 +1,10 @@
 import { Grid } from "@mui/material";
 import Product from "./Product/Product";
 
-const Products = ({ products }) => {
+const Products = ({ products, onAddToCart }) => {
   const myProducts = products.map((product) => (
     <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
-      <Product product={product} />
+      <Product onAddToCart={onAddToCart} product={product} />
     </Grid>
   ));
 

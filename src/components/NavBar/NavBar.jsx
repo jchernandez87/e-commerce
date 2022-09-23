@@ -11,7 +11,7 @@ import { ShoppingCart } from "@mui/icons-material";
 import styles from "./styles";
 import logo from "../../assets/logo.png";
 
-const NavBar = () => {
+const NavBar = ({ totalItems }) => {
   return (
     <div>
       <AppBar position="fixed" style={styles.appBar} color="inherit">
@@ -29,7 +29,7 @@ const NavBar = () => {
           <div style={styles.grow} />
           <div style={styles.button}>
             <IconButton aria-label="show cart items" color="inherit">
-              <Badge badgeContent={2} color="secondary">
+              <Badge badgeContent={totalItems} color="secondary">
                 <ShoppingCart />
               </Badge>
             </IconButton>
