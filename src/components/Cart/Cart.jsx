@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import CardItem from "./CartItem/CartItem";
 import styles from "./styles";
 
-const Cart = ({ myCart, updateQuantity, removeItem }) => {
+const Cart = ({ myCart, updateQuantity, removeItem, emptyCart }) => {
   const EmptyCart = () => (
     <Typography variant="subtitle1">
       You have no items in your shopping cart,
@@ -37,6 +37,7 @@ const Cart = ({ myCart, updateQuantity, removeItem }) => {
         </Typography>
         <div>
           <Button
+            onClick={emptyCart}
             styles={styles.emptyButton}
             size="large"
             type="button"

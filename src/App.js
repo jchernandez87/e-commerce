@@ -33,7 +33,13 @@ const App = () => {
     .remove(productId)
     .then(updatedCart => setCart(updatedCart))
   }
-
+  
+  const handleEmptyCart = async () => {
+    await commerce.cart
+    .empty()
+    .then(updatedCart => setCart(updatedCart))
+  }
+ 
   useEffect(() => {
     fetchProducts();
     fetchCart();
@@ -54,6 +60,7 @@ const App = () => {
           path="/cart"
           element={
             <Cart
+              emptyCart={handleEmptyCart}
               removeItem={handleRemoveItem}
               updateQuantity={handleUpdateQuantity}
               myCart={cart}
