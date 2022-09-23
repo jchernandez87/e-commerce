@@ -1,3 +1,4 @@
+import { ImportExport } from "@mui/icons-material";
 import {
   Typography,
   Button,
@@ -8,7 +9,7 @@ import {
 } from "@mui/material";
 import styles from "./styles";
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, decreaseQuantity, increaseQuantity }) => {
   return (
     <Card>
       <CardMedia image={item.image.url} alt={item.name} style={styles.media} />
@@ -20,11 +21,11 @@ const CartItem = ({ item }) => {
       </CardContent>
       <CardActions style={styles.cardActions}>
         <div style={styles.buttons}>
-          <Button type="button" size="small">
+          <Button onClick={() => decreaseQuantity(item.id, {quantity: item.quantity - 1})} type="button" size="small">
             -
           </Button>
           <Typography>{item.quantity}</Typography>
-          <Button type="button" size="small">
+          <Button onClick={() => increaseQuantity(item.id, {quantity: item.quantity + 1})} type="button" size="small">
             +
           </Button>
         </div>

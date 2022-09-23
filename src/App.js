@@ -19,12 +19,19 @@ const App = () => {
   const handleAddToCart = (productId, quantity) => {
     commerce.cart
       .add(productId, quantity)
-      .then((response) => setCart(response));
+      .then((updatedCart) => setCart(updatedCart));
   };
 
-  const handleEmptyCart = () => {
-    commerce.cart.empty();
-    setCart({});
+  const handleDecreaseQuantity = (productId, productQuantity) => {
+    commerce.cart
+      .update(productId, productQuantity)
+      .then((updatedCart) => setCart(updatedCart));
+  };
+
+  const handleIncreaseQuantity = (productId, productQuantity) => {
+    commerce.cart
+      .update(productId, productQuantity)
+      .then((updatedCart) => setCart(updatedCart));
   };
 
   useEffect(() => {
@@ -45,7 +52,13 @@ const App = () => {
         />
         <Route
           path="/cart"
-          element={<Cart onEmptyCart={handleEmptyCart} myCart={cart} />}
+          element={
+            <Cart
+              increaseQuantity={handleIncreaseQuantity}
+              decreaseQuantity={handleDecreaseQuantity}
+              myCart={cart}
+            />
+          }
         />
       </Routes>
     </div>

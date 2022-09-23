@@ -1,19 +1,28 @@
 import { Container, Typography, Button, Grid } from "@mui/material";
+import { Link } from "react-router-dom";
 import CardItem from "./CartItem/CartItem";
 import styles from "./styles";
 
-const Cart = ({ myCart, onEmptyCart }) => {
-  if (!myCart.line_items) return "...Loading";
-
+const Cart = ({ myCart, decreaseQuantity, increaseQuantity }) => {
   const EmptyCart = () => (
     <Typography variant="subtitle1">
-      You have no items in your shopping cart, start adding some!
+      You have no items in your shopping cart,
+      <Link style={styles.link} to="/">
+        {" "}
+        start adding some!
+      </Link>
     </Typography>
   );
 
+  if (!myCart.line_items) return "...Loading";
+
   const cartItems = myCart.line_items.map((item) => (
     <Grid item key={item.id} xs={12} sm={4}>
-      <CardItem item={item} />
+      <CardItem
+        increaseQuantity={increaseQuantity}
+        decreaseQuantity={decreaseQuantity}
+        item={item}
+      />
     </Grid>
   ));
 
@@ -28,7 +37,6 @@ const Cart = ({ myCart, onEmptyCart }) => {
         </Typography>
         <div>
           <Button
-            onClick={onEmptyCart}
             styles={styles.emptyButton}
             size="large"
             type="button"
