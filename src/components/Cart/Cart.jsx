@@ -47,6 +47,8 @@ const Cart = ({ myCart, updateQuantity, removeItem, emptyCart }) => {
             Empty Cart
           </Button>
           <Button
+            component={Link}
+            to="/checkout"
             style={styles.checkoutButton}
             size="large"
             type="button"

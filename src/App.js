@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { NavBar, Products, Cart } from "./components";
+import { NavBar, Products, Cart, Checkout } from "./components";
 import { commerce } from "./lib/commerce";
 
 const App = () => {
@@ -30,16 +30,14 @@ const App = () => {
 
   const handleRemoveItem = async (productId) => {
     await commerce.cart
-    .remove(productId)
-    .then(updatedCart => setCart(updatedCart))
-  }
-  
+      .remove(productId)
+      .then((updatedCart) => setCart(updatedCart));
+  };
+
   const handleEmptyCart = async () => {
-    await commerce.cart
-    .empty()
-    .then(updatedCart => setCart(updatedCart))
-  }
- 
+    await commerce.cart.empty().then((updatedCart) => setCart(updatedCart));
+  };
+
   useEffect(() => {
     fetchProducts();
     fetchCart();
@@ -67,6 +65,7 @@ const App = () => {
             />
           }
         />
+        <Route path="/checkout" element={<Checkout />}/>
       </Routes>
     </div>
   );
