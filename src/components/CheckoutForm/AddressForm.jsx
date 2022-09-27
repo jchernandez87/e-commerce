@@ -18,9 +18,14 @@ const AddressForm = () => {
         Shipping Address
       </Typography>
       <FormProvider {...methods}>
-        <form onSubmit="">
+        <form onSubmit={() => console.log("hello")}>
           <Grid container spacing={3}>
-            <FormInput required name="firstName" label="first name" />
+            <FormInput required name="firstName" label="First name" />
+            <FormInput required name="lastName" label="Last name" />
+            <FormInput required name="address1" label="Address" />
+            <FormInput required name="email" label="Email" />
+            <FormInput required name="city" label="City" />
+            <FormInput required name="zip" label="ZIP / Postal code" />
           </Grid>
         </form>
       </FormProvider>
