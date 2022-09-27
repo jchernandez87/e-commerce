@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Paper,
   Stepper,
@@ -9,18 +9,32 @@ import {
   Divider,
   Button,
 } from "@mui/material";
+import { commerce } from "../../../lib/commerce";
 import AddressForm from "../AddressForm";
 import PaymentForm from "../PaymentForm";
 import styles from "./Styles";
 
 const steps = ["Shipping address", "Payment details"];
 
-const Checkout = () => {
+const Checkout = ({ cart }) => {
   const [activeStep, setActiveStep] = useState(0);
+  const [checkoutToken, setCheckoutToken] = useState(null)
+
+  useEffect(() => {
+    const generateToken = async () => {
+      try {
+        const token = await commerce.checkout.generateToken(cart.id, { type: "cart"});
+        console.log(token)
+        setCheckoutToken(token)
+      } catch (err) {}
+    };
+
+    generateToken()
+  }, []);
 
   const Confirmation = () => <h1>Confirmation</h1>;
 
-  const Form = () => (activeStep === 0 ? <AddressForm /> : <PaymentForm />);
+  const Form = () => (activeStep === 0 ? <AddressForm checkoutToken={checkoutToken} /> : <PaymentForm />);
 
   return (
     <>
