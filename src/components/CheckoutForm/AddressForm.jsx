@@ -90,14 +90,16 @@ const AddressForm = ({ checkoutToken, next }) => {
       </Typography>
       <FormProvider {...methods}>
         <form
-          onSubmit={methods.handleSubmit((data) =>
+          onSubmit={methods.handleSubmit((data) => {
+            console.log(data)
+
             next({
               ...data,
               shippingCountry,
               shippingSubdivision,
               shippingOption,
             })
-          )}
+          })}
         >
           <Grid container spacing={3}>
             <FormInput name="firstName" label="First name" />

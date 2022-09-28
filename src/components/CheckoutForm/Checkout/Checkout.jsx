@@ -43,6 +43,8 @@ const Checkout = ({ cart }) => {
     nextStep();
   };
 
+  console.log(shippingData)
+
   const Confirmation = () => <h1>Confirmation</h1>;
 
   const Form = () =>
