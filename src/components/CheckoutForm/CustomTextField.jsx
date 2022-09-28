@@ -9,6 +9,7 @@ const FormInput = ({ name, label, required }) => {
       <Controller
         control={control}
         name={name}
+        defaultValue=""
         render={({ field: { onChange } }) => (
           <TextField onChange={onChange} fullWidth required label={label} />
         )}

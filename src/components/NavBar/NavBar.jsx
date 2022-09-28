@@ -14,7 +14,6 @@ import logo from "../../assets/logo.png";
 
 const NavBar = ({ totalItems }) => {
   const { pathname } = useLocation();
-  const showCart = pathname !== "/cart";
 
   return (
     <div>
@@ -37,8 +36,8 @@ const NavBar = ({ totalItems }) => {
             My commerce
           </Typography>
           <div style={styles.grow} />
-          <div style={styles.button}>
-            {showCart && (
+          {pathname === "/" && (
+            <div style={styles.button}>
               <IconButton
                 component={Link}
                 to="/cart"
@@ -49,8 +48,8 @@ const NavBar = ({ totalItems }) => {
                   <ShoppingCart />
                 </Badge>
               </IconButton>
-            )}
-          </div>
+            </div>
+          )}
         </Toolbar>
       </AppBar>
     </div>
