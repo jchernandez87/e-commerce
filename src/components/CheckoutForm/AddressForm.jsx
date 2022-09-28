@@ -19,6 +19,7 @@ const AddressForm = ({ checkoutToken, next }) => {
   const [shippingSubdivision, setShippingSubdivision] = useState("");
   const [shippingOptions, setShippingOptions] = useState([]);
   const [shippingOption, setShippingOption] = useState("");
+  const methods = useForm();
 
   const countries = Object.entries(shippingCountries).map(([code, name]) => ({
     id: code,
@@ -81,8 +82,6 @@ const AddressForm = ({ checkoutToken, next }) => {
         shippingSubdivision
       );
   }, [shippingSubdivision]);
-
-  const methods = useForm();
 
   return (
     <>
