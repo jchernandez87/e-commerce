@@ -18,22 +18,41 @@ const steps = ["Shipping address", "Payment details"];
 
 const Checkout = ({ cart }) => {
   const [activeStep, setActiveStep] = useState(0);
-  const [checkoutToken, setCheckoutToken] = useState(null)
+  const [checkoutToken, setCheckoutToken] = useState(null);
+  const [shippingData, setShippingData] = useState({});
 
   useEffect(() => {
     const generateToken = async () => {
       try {
-        const token = await commerce.checkout.generateToken(cart.id, { type: "cart"});
-        setCheckoutToken(token)
+        const token = await commerce.checkout.generateToken(cart.id, {
+          type: "cart",
+        });
+        setCheckoutToken(token);
       } catch (err) {}
     };
 
-    generateToken()
+    generateToken();
   }, [cart]);
+
+  const nextStep = () => setActiveStep((prevStep) => prevStep + 1);
+  const backStep = () => setActiveStep((prevStep) => prevStep - 1);
+
+  const next = (data) => {
+    setShippingData(data);
+
+    nextStep();
+  };
+
+  console.log(shippingData)
 
   const Confirmation = () => <h1>Confirmation</h1>;
 
-  const Form = () => (activeStep === 0 ? <AddressForm checkoutToken={checkoutToken} /> : <PaymentForm />);
+  const Form = () =>
+    activeStep === 0 ? (
+      <AddressForm next={next} checkoutToken={checkoutToken} />
+    ) : (
+      <PaymentForm shippingData={shippingData} />
+    );
 
   return (
     <>
@@ -49,7 +68,11 @@ const Checkout = ({ cart }) => {
               </Step>
             ))}
           </Stepper>
-          {activeStep === steps.length ? <Confirmation /> : checkoutToken && <Form />}
+          {activeStep === steps.length ? (
+            <Confirmation />
+          ) : (
+            checkoutToken && <Form />
+          )}
         </Paper>
       </main>
     </>
