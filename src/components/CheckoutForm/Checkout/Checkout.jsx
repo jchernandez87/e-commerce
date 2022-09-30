@@ -20,9 +20,9 @@ const steps = ["Shipping address", "Payment details"];
 const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
   const [activeStep, setActiveStep] = useState(0);
   const [checkoutToken, setCheckoutToken] = useState(null);
-  const [isFinish, setIsFinish] = useState(false)
+  const [isFinish, setIsFinish] = useState(false);
   const [shippingData, setShippingData] = useState({});
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const generateToken = async () => {
@@ -32,7 +32,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
         });
         setCheckoutToken(token);
       } catch (err) {
-          navigate.pushState('/')
+        navigate.pushState("/");
       }
     };
 
@@ -50,48 +50,67 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
 
   const timeout = () => {
     setTimeout(() => {
-      setIsFinish(true)
-    }, 3000)
-  }
+      setIsFinish(true);
+    }, 3000);
+  };
 
-  let Confirmation = () => order.costumer ? (
-    <>
-      <div>
-        <Typography variant="h5">Thank you for your purchase, {order.costumer.firstname} {order.costumer.lastname}</Typography>
+  let Confirmation = () =>
+    order.costumer ? (
+      <>
+        <div>
+          <Typography variant="h5">
+            Thank you for your purchase, {order.costumer.firstname}{" "}
+            {order.costumer.lastname}
+          </Typography>
           <Divider style={styles.divider} />
-          <Typography variant="subtitle2">Order ref: {order.costumer_reference}</Typography>
+          <Typography variant="subtitle2">
+            Order ref: {order.costumer_reference}
+          </Typography>
+        </div>
+        <br />
+        <Button component={Link} to="/" variant="outlined" type="button">
+          Back to Home
+        </Button>
+      </>
+    ) : isFinish ? (
+      <>
+        <div>
+          <Typography variant="h5">Thank you for your purchase</Typography>
+          <Divider style={styles.divider} />
+        </div>
+        <br />
+        <Button component={Link} to="/" variant="outlined" type="button">
+          Back to Home
+        </Button>
+      </>
+    ) : (
+      <div style={styles.spinner}>
+        <CircularProgress />
       </div>
-      <br />
-      <Button component={Link} to="/" variant="outlined" type="button">Back to Home</Button>
-    </>
-  ) : isFinish ? (
-    <>
-    <div>
-      <Typography variant="h5">Thank you for your purchase</Typography>
-        <Divider style={styles.divider} />
-    </div>
-    <br />
-    <Button component={Link} to="/" variant="outlined" type="button">Back to Home</Button>
-  </>
-  ) : (
-    <div style={styles.spinner}>
-      <CircularProgress />
-    </div>
-  );
+    );
 
-  if(error) {
+  if (error) {
     <>
       <Typography variant="h5">Error: {error}</Typography>
       <br />
-      <Button component={Link} to="/" variant="outlined" type="button">Back to Home</Button>
-    </>
+      <Button component={Link} to="/" variant="outlined" type="button">
+        Back to Home
+      </Button>
+    </>;
   }
 
   const Form = () =>
     activeStep === 0 ? (
       <AddressForm next={next} checkoutToken={checkoutToken} />
     ) : (
-      <PaymentForm nextStep={nextStep} backStep={backStep} shippingData={shippingData} checkoutToken={checkoutToken} onCaptureCheckout={onCaptureCheckout} timeout={timeout}/>
+      <PaymentForm
+        nextStep={nextStep}
+        backStep={backStep}
+        shippingData={shippingData}
+        checkoutToken={checkoutToken}
+        onCaptureCheckout={onCaptureCheckout}
+        timeout={timeout}
+      />
     );
 
   return (
