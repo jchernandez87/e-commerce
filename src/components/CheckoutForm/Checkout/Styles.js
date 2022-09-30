@@ -1,13 +1,17 @@
 const styles = {
   appBar: {
-    position: 'relative',
+    position: "relative",
   },
-  layout: {
-    marginTop: '100px',
-    width: 'auto',
+  container: {
+    display: "flex",
+    justifyContent: " center",
+  },
+  layout: (size) => ({
+    marginTop: "100px",
+    width: size <= 800 ? "auto" : "700px",
     marginLeft: "5px",
     marginRight: "5px",
-  },
+  }),
   paper: {
     marginTop: "15px",
     marginBottom: "15px",
@@ -17,21 +21,21 @@ const styles = {
     padding: "10px",
   },
   buttons: {
-    display: 'flex',
-    justifyContent: 'flex-end',
+    display: "flex",
+    justifyContent: "flex-end",
   },
   button: {
     marginTop: "15px",
     marginLeft: "5px",
   },
   divider: {
-    margin: '20px 0',
+    margin: "20px 0",
   },
   spinner: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
-}
+};
 
 export default styles;

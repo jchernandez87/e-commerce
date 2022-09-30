@@ -14,7 +14,6 @@ import { commerce } from "../../../lib/commerce";
 import AddressForm from "../AddressForm";
 import PaymentForm from "../PaymentForm";
 import styles from "./Styles";
-
 const steps = ["Shipping address", "Payment details"];
 
 const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
@@ -22,7 +21,16 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
   const [checkoutToken, setCheckoutToken] = useState(null);
   const [isFinish, setIsFinish] = useState(false);
   const [shippingData, setShippingData] = useState({});
+  const [screenSize, setScreenSize] = useState(window.innerWidth);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const generateToken = async () => {
@@ -114,8 +122,8 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
     );
 
   return (
-    <>
-      <main style={styles.layout}>
+    <div style={styles.container}>
+      <main style={styles.layout(screenSize)}>
         <Paper style={styles.paper}>
           <Typography variant="h4" align="center">
             Checkout
@@ -130,11 +138,11 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
           {activeStep === steps.length ? (
             <Confirmation />
           ) : (
-            checkoutToken && <Form />
+            checkoutToken && <Form lg={4} />
           )}
         </Paper>
       </main>
-    </>
+    </div>
   );
 };
 
