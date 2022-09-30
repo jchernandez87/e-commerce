@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- PROJECT LOGO -->
 
-## Available Scripts
+  <h1 align="center">E-commerce</h3>
+  <p align="center">
+  </br>
+    <a href="https://github.com/jchernandez87/e-commerce"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://juanecommerce.netlify.app/">View Deploy</a>
+    ·
+    <a href="https://github.com/jchernandez87/e-commerce/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/jchernandez87/e-commerce/issues">Request Feature</a>
+  </p>
+</p>
 
-In the project directory, you can run:
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
+  </ol>
+</details>
 
-### `npm start`
+<!-- ABOUT THE PROJECT -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## About The Project
+<br />
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+[![Capstone][product-screenshot]](https://juanecommerce.netlify.app/)
 
-### `npm test`
+An e-commerce site build by using, React, MaterialUI, Commercejs for the products and cart, and stripe for the payment.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I used different react features and libraries to accomplish this project:
+- Hooks : useState, useEffect,
+- Libraries: react-router-dom, react-hook-form
+- Styles: materialUI, inline styles,and CSS-in-JS
 
-### `npm run build`
+Use commerce.js:
+- Add some products to my commerce.
+- Add international shipping option, and a fee.
+- Get my sandbox key.
+- Use the commerce js library to make API calls.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Use Stripe for the payment process:
+- Get Stripe key.
+- I had to simulate the final step, since I don't have a credit card to connect commerce.js with stripe.
+- You can finish your payment process by just typing 42 until you fill all the empty fields in the credit card.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Built With
 
-### `npm run eject`
+- [React](https://reactjs.org/)
+- [React Hook Form](https://react-hook-form.com/)
+- [MaterialUI](https://mui.com/)
+- [Commerce.js](https://commercejs.com/)
+- [Stripe](https://stripe.com/)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<!-- CONTACT -->
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contact
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+👤 **Juan Carlos Hernandez**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- GitHub: [@JuanCarlosHernandez](https://github.com/jchernandez87)
+- Gmail: [@Gmail](mailto:jchernandez827@gmail.com)
+- LinkedIn: [@LinkedIn](https://www.linkedin.com/in/juan-carlos-hernandez-200a05175)
+- Twitter: [@FindMeOnTwitter](https://twitter.com/Juancar70771241)
 
-## Learn More
+<!-- ACKNOWLEDGEMENTS -->
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Acknowledgements
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [React](https://reactjs.org/)
+- [Commerce.js](https://commercejs.com/)
+- [MaterialUI](https://mui.com/)
+- [Stripe](https://stripe.com/)
+- [Netlify](https://www.netlify.com/)
+- [Img Shields](https://shields.io)
 
-### Code Splitting
+---------------------
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[contributors-shield]: https://img.shields.io/github/contributors/jchernandez87/e-commerce?style=for-the-badge
+[contributors-url]: https://github.com/jchernandez87/e-commerce/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/jchernandez87/e-commerce?style=for-the-badge
+[forks-url]: https://github.com/jchernandez87/e-commerce/network/members
+[stars-shield]: https://img.shields.io/github/stars/jchernandez87/e-commerce?style=for-the-badge
+[stars-url]: https://github.com/jchernandez87/e-commerce/stargazers
+[issues-shield]: https://img.shields.io/github/issues/jchernandez87/e-commerce?style=for-the-badge
+[issues-url]: https://github.com/jchernandez87/e-commerce/issues
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/juan-carlos-hernandez-200a05175
+[product-screenshot]: https://user-images.githubusercontent.com/44485810/193345747-4c9ed705-e321-4166-bd48-a021828b4c96.png
